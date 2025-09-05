@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="OrangeHRMSuite" parallel="classes" thread-count="5">
+        <listeners>
+            <listener class-name="com.orangehrm.listeners.TestListener"/>
+        </listeners>
+        <test name="OrangeHRMTest">
+           <!-- <parameter name="browser" value="chrome"/>
+            <parameter name="url" value="https://opensource-demo.orangehrmlive.com/"/>-->
+        <classes>
+            <class name="com.orangehrm.test.LoginPageTest"/>
+            <class name="com.orangehrm.test.HomePageTest"/>
+            <class name="com.orangehrm.test.LoginClass"/>
+            <class name="com.orangehrm.test.LoginClass2"/>
+            <class name="com.orangehrm.test.ApiTest"/>
+            <!--<class name="com.orangehrm.test.DBVerificationTest"/>-->
+
+        </classes>
+    </test>
+</suite>
