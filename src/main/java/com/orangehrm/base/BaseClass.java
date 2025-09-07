@@ -148,10 +148,6 @@ public class BaseClass {
         //ExtentManager.endTest(); // This has been implemented in TestListener.java
     }
 
-    /*public  WebDriver getDriver() {
-        return driver;
-    }*/
-
     public static WebDriver getDriver() {
 
         if(driver.get() == null) {
