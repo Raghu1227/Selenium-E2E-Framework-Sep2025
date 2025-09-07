@@ -3,11 +3,14 @@ package com.orangehrm.base;
 import com.orangehrm.actiondriver.ActionDriver;
 import com.orangehrm.utilities.ExtentManager;
 import com.orangehrm.utilities.LoggerManager;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -88,11 +91,13 @@ public class BaseClass {
         if (browserName.equalsIgnoreCase("chrome")) {
 
             ChromeOptions options = new ChromeOptions();
+            options.setAcceptInsecureCerts(true);
+            options.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, "dismiss");
             options.addArguments("--remote-allow-origins=*");
             options.addArguments("--headless=new"); // Run in headless mode
+            options.addArguments("--window-size=1920,1080"); // Set window size
             options.addArguments("--disable-gpu"); // Disable GPU acceleration
-            //options.addArguments("--window-size=1920,1080"); // Set window size
-            //options.addArguments("--incognito"); // Incognito mode
+            options.addArguments("--incognito"); // Incognito mode
             options.addArguments("--disable-extensions"); // Disable extensions
             options.addArguments("--no-sandbox"); // Bypass OS security model
             options.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
@@ -120,6 +125,7 @@ public class BaseClass {
 
     private void configureBrowser() {
         getDriver().manage().window().maximize();
+        getDriver().manage().window().setSize(new Dimension(1920, 1080));
         getDriver().manage().deleteAllCookies();
         int implicitWait = Integer.parseInt(prop.getProperty("implicit_wait"));
        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWait));
