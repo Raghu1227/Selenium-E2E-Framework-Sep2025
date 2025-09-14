@@ -5,12 +5,12 @@ pipeline {
         maven 'maven-3.9.11'
     }
 
-    /* environment {
+    environment {
         COMPOSE_PATH = "${WORKSPACE}/docker" // 🔁 Adjust if compose file is elsewhere
         SELENIUM_GRID = "true"
-    } */
+    }
 
-    /*stages {
+    stages {
          stage('Start Selenium Grid via Docker Compose') {
             steps {
                 script {
@@ -20,7 +20,7 @@ pipeline {
                     sleep 30 // Add a wait if needed
                 }
             }
-        } */
+        }
 
   stages {
         stage('Checkout') {
