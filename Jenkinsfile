@@ -67,7 +67,14 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: '**/src/test/resources/ExtentReport/*.html', fingerprint: true
-            junit 'target/surefire-reports/*.xml'
+            //junit 'target/surefire-reports/*.xml'
+             script {
+                        if (fileExists('target/surefire-reports')) {
+                            junit 'target/surefire-reports/*.xml'
+                        } else {
+                            echo 'No test report files found to archive.'
+                       }
+             }
         }
 
         success {
