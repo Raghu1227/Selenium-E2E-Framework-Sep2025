@@ -39,8 +39,8 @@ pipeline {
 
         stage('Test') {
             steps {
-               /*  bat "mvn clean test -DseleniumGrid=true" */
-               bat 'mvn test'
+                bat "mvn clean test -DseleniumGrid=true"
+              /*  bat 'mvn test' */
             }
         }
 
