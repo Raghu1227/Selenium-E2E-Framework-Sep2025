@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-  stages {
+
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Raghu1227/Selenium-E2E-Framework-Sep2025.git'
@@ -31,8 +31,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                /* bat 'mvn clean install -DseleniumGrid=true' */
-                bat 'mvn clean install'
+                 bat 'mvn clean install -DseleniumGrid=true'
+               /* bat 'mvn clean install'  */
 
             }
         }
@@ -44,14 +44,14 @@ pipeline {
             }
         }
 
-       /*  stage('Stop Selenium Grid') {
+       stage('Stop Selenium Grid') {
             steps {
                 script {
                     echo "Stopping Selenium Grid..."
                     bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml down"
                 }
             }
-        } */
+        }
 
         stage('Reports') {
             steps {
